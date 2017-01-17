@@ -6,6 +6,7 @@ class ShoppingCart
 {
     private $shoppingList = [];
     private $priceOfOneBook = 100;
+    private $season_count = 0;
 
     public function __construct($firstSeason = 0, $secondSeason = 0, $thirdSeason = 0, $fourthSeason = 0, $fifthSeason = 0)
     {
@@ -21,22 +22,35 @@ class ShoppingCart
     public function getPrice()
     {
         $result = 0;
-        $season_count = 0;
         foreach ($this->shoppingList as $num) {
             if (0 < $num) {
                 $result += $num * $this->priceOfOneBook;
-                $season_count++;
+                $this->season_count++;
             }
         }
 
-        if (2 === $season_count) {
-            $result = $result * 0.95;
-        } elseif (3 === $season_count) {
-            $result = $result * 0.9;
-        } elseif (4 === $season_count) {
-            $result = $result * 0.8;
-        }
+        $result = $result * $this->getDiscount();
 
         return $result;
+    }
+
+    public function getDiscount()
+    {
+        switch ($this->season_count) {
+            case 1:
+                $discount = 1;
+                break;
+            case 2:
+                $discount = 0.95;
+                break;
+            case 3:
+                $discount = 0.9;
+                break;
+            case 4:
+                $discount = 0.8;
+                break;
+        }
+
+        return $discount;
     }
 }
