@@ -31,6 +31,8 @@ class ShoppingCart
 
         if (2 === $season_count) {
             $result = $result * 0.95;
+        } elseif (3 === $season_count) {
+            $result = $result * 0.9;
         }
 
         return $result;
