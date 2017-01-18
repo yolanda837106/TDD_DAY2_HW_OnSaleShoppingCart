@@ -113,4 +113,22 @@ class ShoppingCartTest extends \PHPUnit_Framework_TestCase
         // assert
         $this->assertEquals($expect, $result);
     }
+
+    public function testGetPriceOfOneFirstTwoSecondTwoThirdSeason()
+    {
+        // arrange
+        $firstSeason = 1;
+        $secondSeason = 2;
+        $thirdSeason = 2;
+        $fourthSeason = 0;
+        $fifthSeason = 0;
+        $expect = 460;
+
+        // act
+        $shoppingCart = new ShoppingCart($firstSeason, $secondSeason, $thirdSeason, $fourthSeason, $fifthSeason);
+        $result = $shoppingCart->getPrice();
+
+        // assert
+        $this->assertEquals($expect, $result);
+    }
 }
