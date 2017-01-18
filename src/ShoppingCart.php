@@ -49,6 +49,9 @@ class ShoppingCart
             case 4:
                 $discount = 0.8;
                 break;
+            case 5:
+                $discount = 0.75;
+                break;
         }
 
         return $discount;
