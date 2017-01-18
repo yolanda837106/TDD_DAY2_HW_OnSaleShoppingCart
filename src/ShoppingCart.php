@@ -38,7 +38,7 @@ class ShoppingCart
         return $result;
     }
 
-    public function getBookNum($shoppingList)
+    private function getBookNum($shoppingList)
     {
         $book_num = 0;
         foreach ($shoppingList as $num) {
@@ -48,7 +48,7 @@ class ShoppingCart
         return $book_num;
     }
 
-    public function getDiscount($season_count)
+    private function getDiscount($season_count)
     {
         switch ($season_count) {
             case 1:
