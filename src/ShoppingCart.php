@@ -22,14 +22,17 @@ class ShoppingCart
     public function getPrice()
     {
         $result = 0;
+        $book_count = 0;
         foreach ($this->shoppingList as $num) {
             if (0 < $num) {
-                $result += $num * $this->priceOfOneBook;
                 $this->season_count++;
+                $book_count += $num;
             }
         }
 
-        $result = $result * $this->getDiscount();
+        $result = $this->season_count * $this->getDiscount() * $this->priceOfOneBook;
+
+        $result += ($book_count - $this->season_count) * $this->priceOfOneBook;
 
         return $result;
     }
